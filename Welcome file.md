@@ -61,3 +61,9 @@ Glówny program:
 Wykresy 
 	- https://www.youtube.com/watch?v=jTn3U_T2Ums
 	- 
+
+
+Pomysł 1.
+Porzucić Unreala, stworzyć scrapper tworzący coś na styl Iris Dataset i wytrenować na nim Kwantowy ML, wykrsy które on zwróci wrzucić na hosting 
+Scrapper mógłby np pobierać rok powstania obrazu, dwa wymiary i cene (akurat byłoby art z nazwy) 
+
