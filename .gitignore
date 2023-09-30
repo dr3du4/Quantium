@@ -1,4 +1,3 @@
 venv/*
 *.env*
 .vscode/*
-*.csv*
