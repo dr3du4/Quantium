@@ -205,6 +205,13 @@
 
 /* CSS */
 .button-78 {
+
+  height: 64px; /* Ustaw sztywną wysokość */
+  margin: auto; /* Automatyczne wyśrodkowanie na osi poziomej */
+  display: flex;
+  justify-content: center; /* Wyśrodkowanie na osi poziomej */
+  align-items: center;
+
   align-items: center;
   appearance: none;
   background-clip: padding-box;
@@ -312,6 +319,36 @@
 .button-78:disabled {
   cursor: default;
   opacity: .24;
+}
+
+.container {
+  width: 100vw; /* 100% szerokości widoku */
+  height: 100vh; /* 100% wysokości widoku */
+  background-color: #f0f0f0; /* Ustaw kolor tła na dowolny, który chcesz */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 100px;
+}
+
+.header {
+  width: 100vw; /* 100% szerokości widoku */
+  height: 100vh; /* 100% wysokości widoku */
+  background-color: #f0f0f0; 
+  flex-direction: column;
+  display: flex;
+}
+
+.img {
+  position: absolute;
+}
+
+.title {
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  padding-top: 60px;
 }
 
 /* Tablet and Smaller Desktop */
