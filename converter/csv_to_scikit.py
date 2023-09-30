@@ -3,7 +3,6 @@ import pandas as pd
 
 def csv_to_scikit(input_file):
     df = pd.read_csv(input_file,header=0)
-    dictionary = {}
     arr = []
 
     for ind in df[df.columns.values[len(df.columns.values)-1]].index:
