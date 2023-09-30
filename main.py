@@ -15,16 +15,29 @@ from qiskit_machine_learning.algorithms.classifiers import VQC
 import time
 from sklearn.decomposition import (PCA)
 from qiskit.circuit.library import EfficientSU2
+from converter.csv_to_scikit import csv_to_scikit
+
+# iris_data=csv_to_scikit("./scrappers/iss/iss_dataset.csv")
+iris_data=csv_to_scikit("./iris.csv")
 
 iris_data = load_iris()
-    #print(iris_data.DESCR)
+    # print(iris_data.DESCR)
 
+# print(iris_data)
 
-features = iris_data.data
-labels = iris_data.target
+# features = iris_data.data
+# labels = iris_data.target
+# feature_names = iris_data.feature_names
+# print(len(feature_names))
+features = iris_data["data"]
+labels = iris_data["target"]
+feature_names = iris_data["feature_names"]
+# print(labels)
+# print(feature_names)
+# print(features)
 
-df = pd.DataFrame(iris_data.data, columns=iris_data.feature_names)
-df["class"] = pd.Series(iris_data.target)
+df = pd.DataFrame(features, columns=feature_names)
+df["class"] = pd.Series(labels)
 
 def createSeaborn(df):
      hackaton_palete = sns.color_palette("magma", 3)
@@ -32,8 +45,6 @@ def createSeaborn(df):
      SeabornCharts = plt
      plt.savefig('seeborn.png')
      SeabornCharts.show()
-
-
 
 
 
@@ -99,9 +110,7 @@ def callback_graph(weights, obj_func_eval):
     plt.xlabel("Iteration")
     plt.ylabel("Objective function value")
     plt.plot(range(len(objective_func_vals)), objective_func_vals,color='pink')
-    plt.show()
-
-
+    # plt.show()
 
 
 
@@ -198,6 +207,11 @@ def createEffcientSU2():
     print(f"Training time: {round(elapsed)} seconds")
 
 createEffcientSU2()
+# createSeaborn(df)
+# createFirstCircuit(df)
+reduceSeeborn(features)
+reduceQuantumML()
+createSecondCircuit(df)
 
 # def sumarize():
 #
