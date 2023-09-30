@@ -106,34 +106,38 @@ def callback_graph(weights, obj_func_eval):
 
 
 
+def reduceSeeborn(features):
+    hackaton_palete = sns.color_palette("magma", 3)
+    df = pd.DataFrame(iris_data.data, columns=iris_data.feature_names)
 
-def reduceQuantumML(df):
-    train_features, test_features, train_labels, test_labels = train_test_split(
-        features, labels, train_size=0.8, random_state=algorithm_globals.random_seed)
 
+    df["class"] = pd.Series(iris_data.target)
+    df = df.iloc[::2]
 
-    features = PCA(n_components=2).fit_transform(features)
 
     plt.rcParams["figure.figsize"] = (6, 6)
-    sns.scatterplot(x=features[:, 0], y=features[:, 1], hue=labels, palette="tab10")
+    sns.pairplot(df, hue="class", palette=hackaton_palete)
+    plt.savefig('reduceSeeborn.png')
     plt.show()
 
-reduceQuantumML()
-# train_features, test_features, train_labels, test_labels = train_test_split(
-#     features, labels, train_size=0.8, random_state=algorithm_globals.random_seed
-# )
-#
-# svc.fit(train_features, train_labels)
-#
-# train_score_c2 = svc.score(train_features, train_labels)
-# test_score_c2 = svc.score(test_features, test_labels)
-#
-# print(f"Classical SVC on the training dataset: {train_score_c2:.2f}")
-# print(f"Classical SVC on the test dataset:     {test_score_c2:.2f}")
-#
-#
-# num_features = features.shape[1]
-#
+
+def reduceQuantumML():
+    train_features, test_features, train_labels, test_labels = train_test_split(
+features, labels, train_size=0.8, random_state=algorithm_globals.random_seed)
+    svc = SVC()
+    _ = svc.fit(train_features, train_labels)
+    svc.fit(train_features, train_labels)
+
+    train_score_c2 = svc.score(train_features, train_labels)
+    test_score_c2 = svc.score(test_features, test_labels)
+
+    print(f"Classical SVC on the training dataset: {train_score_c2:.2f}")
+    print(f"Classical SVC on the test dataset:     {test_score_c2:.2f}")
+
+
+
+num_features = features.shape[1]
+
 # feature_map = ZZFeatureMap(feature_dimension=num_features, reps=1)
 # ansatz = RealAmplitudes(num_qubits=num_features, reps=3)
 #
