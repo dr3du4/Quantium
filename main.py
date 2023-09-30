@@ -15,6 +15,7 @@ from qiskit_machine_learning.algorithms.classifiers import VQC
 import time
 from sklearn.decomposition import (PCA)
 from qiskit.circuit.library import EfficientSU2
+from converter.csv_to_scikit import csv_to_scikit 
 
 iris_data = load_iris()
     #print(iris_data.DESCR)
