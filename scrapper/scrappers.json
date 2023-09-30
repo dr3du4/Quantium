@@ -1,0 +1,14 @@
+{
+    "scrappers": [
+    {
+        "name": "ISS Sensors",
+        "script": "./scrapper/iss_sensors.py",
+        "csv": "./scrapper/iss_dataset.csv"
+    },
+    {
+        "name": "",
+        "script": "",
+        "csv": ""
+    }
+]
+}
