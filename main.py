@@ -17,8 +17,9 @@ from sklearn.decomposition import (PCA)
 from qiskit.circuit.library import EfficientSU2
 from converter.csv_to_scikit import csv_to_scikit
 
+iris_data=csv_to_scikit("./scrappers/nasa/nasa_dataset.csv")
 # iris_data=csv_to_scikit("./scrappers/iss/iss_dataset.csv")
-iris_data=csv_to_scikit("./iris.csv")
+# iris_data=csv_to_scikit("./iris.csv")
 
 iris_data = load_iris()
     # print(iris_data.DESCR)
@@ -95,7 +96,7 @@ def createFirstCircuit(df):
     print(f"Training time: {round(elapsed)} seconds")
     train_score_q4 = vqc.score(train_features, train_labels)
     test_score_q4 = vqc.score(test_features, test_labels)
-    plt.savefig("secondCircut".png)
+    plt.savefig("secondCircut.png")
     print(f"Quantum VQC on the training dataset: {train_score_q4:.2f}")
     print(f"Quantum VQC on the test dataset:     {test_score_q4:.2f}")
 
@@ -111,7 +112,7 @@ def callback_graph(weights, obj_func_eval):
     plt.xlabel("Iteration")
     plt.ylabel("Objective function value")
     plt.plot(range(len(objective_func_vals)), objective_func_vals,color='pink')
-    plt.show()
+    # plt.show()
 
 
 
@@ -140,7 +141,7 @@ features, labels, train_size=0.8, random_state=algorithm_globals.random_seed)
 
     train_score_c2 = svc.score(train_features, train_labels)
     test_score_c2 = svc.score(test_features, test_labels)
-    plt.savefig("reduceML".png)
+    plt.savefig("reduceML.png")
     print(f"Classical SVC on the training dataset: {train_score_c2:.2f}")
     print(f"Classical SVC on the test dataset:     {test_score_c2:.2f}")
 
@@ -174,7 +175,7 @@ def createSecondCircuit(df):
     print(f"Training time: {round(elapsed)} seconds")
     train_score_q2_ra = vqc.score(train_features, train_labels)
     test_score_q2_ra = vqc.score(test_features, test_labels)
-    plt.savefig("secondCircut".png)
+    plt.savefig("secondCircut.png")
     print(f"Quantum VQC on the training dataset using RealAmplitudes: {train_score_q2_ra:.2f}")
     print(f"Quantum VQC on the test dataset using RealAmplitudes:     {test_score_q2_ra:.2f}")
 
@@ -204,7 +205,7 @@ def createEffcientSU2():
     start = time.time()
     vqc.fit(train_features, train_labels)
     elapsed = time.time() - start
-    plt.savefig("EfficientSU2".png)
+    plt.savefig("EfficientSU2.png")
     print(f"Training time: {round(elapsed)} seconds")
 
 createEffcientSU2()
