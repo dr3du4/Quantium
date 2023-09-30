@@ -135,75 +135,83 @@ features, labels, train_size=0.8, random_state=algorithm_globals.random_seed)
     print(f"Classical SVC on the test dataset:     {test_score_c2:.2f}")
 
 
+def createSecondCircuit(df):
+    num_features = features.shape[1]
+    train_features, test_features, train_labels, test_labels = train_test_split(
+        features, labels, train_size=0.8, random_state=algorithm_globals.random_seed)
 
-num_features = features.shape[1]
+    feature_map = ZZFeatureMap(feature_dimension=num_features, reps=1)
+    ansatz = RealAmplitudes(num_qubits=num_features, reps=3)
 
-# feature_map = ZZFeatureMap(feature_dimension=num_features, reps=1)
-# ansatz = RealAmplitudes(num_qubits=num_features, reps=3)
+    optimizer = COBYLA(maxiter=40)
+    sampler = Sampler()
+    vqc = VQC(
+     sampler=sampler,
+     feature_map=feature_map,
+     ansatz=ansatz,
+     optimizer=optimizer,
+     callback=callback_graph,
+ )
+
+    objective_func_vals = []
+    plt.rcParams["figure.figsize"] = (12, 6)
+
+
+    start = time.time()
+    vqc.fit(train_features, train_labels)
+    elapsed = time.time() - start
+
+    print(f"Training time: {round(elapsed)} seconds")
+    train_score_q2_ra = vqc.score(train_features, train_labels)
+    test_score_q2_ra = vqc.score(test_features, test_labels)
+
+    print(f"Quantum VQC on the training dataset using RealAmplitudes: {train_score_q2_ra:.2f}")
+    print(f"Quantum VQC on the test dataset using RealAmplitudes:     {test_score_q2_ra:.2f}")
+
+def createEffcientSU2():
+    num_features = features.shape[1]
+    train_features, test_features, train_labels, test_labels = train_test_split(
+        features, labels, train_size=0.8, random_state=algorithm_globals.random_seed)
+
+    feature_map = ZZFeatureMap(feature_dimension=num_features, reps=1)
+    ansatz = RealAmplitudes(num_qubits=num_features, reps=3)
+
+
+    optimizer = COBYLA(maxiter=40)
+    sampler = Sampler()
+
+    vqc = VQC(
+     sampler=sampler,
+     feature_map=feature_map,
+     ansatz=ansatz,
+     optimizer=optimizer,
+     callback=callback_graph,
+ )
+
+
+    objective_func_vals = []
+
+    start = time.time()
+    vqc.fit(train_features, train_labels)
+    elapsed = time.time() - start
+
+    print(f"Training time: {round(elapsed)} seconds")
+
+createEffcientSU2()
+
+# def sumarize():
 #
+#     train_score_q2_eff = vqc.score(train_features, train_labels)
+#     test_score_q2_eff = vqc.score(test_features, test_labels)
 #
-# optimizer = COBYLA(maxiter=40)
+#     print(f"Quantum VQC on the training dataset using EfficientSU2: {train_score_q2_eff:.2f}")
+#     print(f"Quantum VQC on the test dataset using EfficientSU2:     {test_score_q2_eff:.2f}")
 #
-# vqc = VQC(
-#     sampler=sampler,
-#     feature_map=feature_map,
-#     ansatz=ansatz,
-#     optimizer=optimizer,
-#     callback=callback_graph,
-# )
-#
-# # clear objective value history
-# objective_func_vals = []
-#
-# # make the objective function plot look nicer.
-# plt.rcParams["figure.figsize"] = (12, 6)
-#
-#
-# start = time.time()
-# vqc.fit(train_features, train_labels)
-# elapsed = time.time() - start
-#
-# print(f"Training time: {round(elapsed)} seconds")
-#
-#
-# train_score_q2_ra = vqc.score(train_features, train_labels)
-# test_score_q2_ra = vqc.score(test_features, test_labels)
-#
-# print(f"Quantum VQC on the training dataset using RealAmplitudes: {train_score_q2_ra:.2f}")
-# print(f"Quantum VQC on the test dataset using RealAmplitudes:     {test_score_q2_ra:.2f}")
-#
-#
-# ansatz = EfficientSU2(num_qubits=num_features, reps=3)
-# optimizer = COBYLA(maxiter=40)
-#
-# vqc = VQC(
-#     sampler=sampler,
-#     feature_map=feature_map,
-#     ansatz=ansatz,
-#     optimizer=optimizer,
-#     callback=callback_graph,
-# )
-#
-# # clear objective value history
-# objective_func_vals = []
-#
-# start = time.time()
-# vqc.fit(train_features, train_labels)
-# elapsed = time.time() - start
-#
-# print(f"Training time: {round(elapsed)} seconds")
-#
-# train_score_q2_eff = vqc.score(train_features, train_labels)
-# test_score_q2_eff = vqc.score(test_features, test_labels)
-#
-# print(f"Quantum VQC on the training dataset using EfficientSU2: {train_score_q2_eff:.2f}")
-# print(f"Quantum VQC on the test dataset using EfficientSU2:     {test_score_q2_eff:.2f}")
-#
-#
-# print(f"Model                           | Test Score | Train Score")
-# print(f"SVC, 4 features                 | {train_score_c4:10.2f} | {test_score_c4:10.2f}")
-# print(f"VQC, 4 features, RealAmplitudes | {train_score_q4:10.2f} | {test_score_q4:10.2f}")
-# print(f"----------------------------------------------------------")
-# print(f"SVC, 2 features                 | {train_score_c2:10.2f} | {test_score_c2:10.2f}")
-# print(f"VQC, 2 features, RealAmplitudes | {train_score_q2_ra:10.2f} | {test_score_q2_ra:10.2f}")
-# print(f"VQC, 2 features, EfficientSU2   | {train_score_q2_eff:10.2f} | {test_score_q2_eff:10.2f}")
+#     print(f"Model                           | Test Score | Train Score")
+#     print(f"SVC, 4 features                 | {train_score_c4:10.2f} | {test_score_c4:10.2f}")
+#     print(f"VQC, 4 features, RealAmplitudes | {train_score_q4:10.2f} | {test_score_q4:10.2f}")
+#     print(f"----------------------------------------------------------")
+#     print(f"SVC, 2 features                 | {train_score_c2:10.2f} | {test_score_c2:10.2f}")
+#     print(f"VQC, 2 features, RealAmplitudes | {train_score_q2_ra:10.2f} | {test_score_q2_ra:10.2f}")
+#     print(f"VQC, 2 features, EfficientSU2   | {train_score_q2_eff:10.2f} | {test_score_q2_eff:10.2f}")
+#     
