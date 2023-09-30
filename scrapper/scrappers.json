@@ -6,9 +6,9 @@
         "csv": "./scrapper/iss_dataset.csv"
     },
     {
-        "name": "",
-        "script": "",
-        "csv": ""
+        "name": "NASA Close Proximity Space Objects",
+        "script": "./scrapper/nasa_api.py",
+        "csv": "./scrapper/nasa_dataset.csv"
     }
 ]
 }
