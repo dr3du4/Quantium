@@ -2,11 +2,11 @@ import { Button,Image } from 'react-bootstrap'
 import { Dropdown,Toggle,Menu,Item } from './client_imports';
 import styles from './page.module.css'
 import Head from 'next/head';
-
+import background from "/public/images/papaj.jpg";
 
 export default function Home() {
   return(
-    <div className={styles.header}>
+    <div style= {{backgroundImage:"url(/quantium_api/public/images/test/papaj.jpg)"}}className={styles.header}>
       <Head>
         <title>Quantum Art</title>
       </Head>
@@ -17,12 +17,15 @@ export default function Home() {
       <div className={styles.center}>
         <Image src="/images/test/foo.png" style={{width: '500px',height: '500px'}}/>
       </div>
-      <div className={styles.container}>        
+      <div className={styles.container1}>        
         <button className={styles["button-78"]}>Create new Quantum art</button>       
+      </div>
+      <div className={styles.container2}>
         <select className={styles.select}>
-          <option>CSS SELECT arrow (classic)</option>
-          <option>No external background image</option>
-          <option>No wrapper</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
         </select>
       </div>
     </div>

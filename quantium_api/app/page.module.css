@@ -270,7 +270,7 @@
   flex-direction: row;
   flex-shrink: 0;
   font-family: Eina01,sans-serif;
-  font-size: 16px;
+  font-size: 23px;
   font-weight: 800;
   justify-content: center;
   line-height: 24px;
@@ -280,7 +280,7 @@
   overflow: visible;
   padding: 19px 26px;
   pointer-events: auto;
-  position: fixed;
+  position: relative;
   text-align: center;
   text-decoration: none;
   text-transform: none;
@@ -366,17 +366,28 @@
   opacity: .24;
 }
 
-.container {
-  width: 100vw; /* 100% szerokości widoku */
-  height: 100vh; /* 100% wysokości widoku */
+.container1 {
+  width: auto; /* 100% szerokości widoku */ /* 100% wysokości widoku */
   background-color: #f0f0f0; /* Ustaw kolor tła na dowolny, który chcesz */
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 100px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 580px;
+}
+
+.container2 {
+  width: auto; /* 100% szerokości widoku */ /* 100% wysokości widoku */
+  background-color: #f0f0f0; /* Ustaw kolor tła na dowolny, który chcesz */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .header {
+  background-image: url('/quantium_api/public/images/test/papaj.jpg');
   width: 100vw; /* 100% szerokości widoku */
   height: 100vh; /* 100% wysokości widoku */
   background-color: #f0f0f0; 
@@ -394,6 +405,8 @@
   justify-content: center;
   align-items: top;
   padding-top: 60px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 60px;
 }
 
 .select {
@@ -401,7 +414,7 @@
   /* styling */
   background-color: white;
   border: thin solid blue;
-  border-radius: 4px;
+  border-radius: 8px;
   display: inline-block;
   font: inherit;
   line-height: 1.5em;
