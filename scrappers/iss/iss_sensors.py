@@ -8,7 +8,7 @@ import shutil
 #     csvwriter = csv.writer(csvfile)
 #     csvwriter.writerow(["TimeStamp", "Value", "ID"])
 
-shutil.copy2('./initial_iss_dataset.csv', './iss_dataset.csv')
+shutil.copy2('./scrappers/iss/initial_iss_dataset.csv', './scrappers/iss/iss_dataset.csv')
 
 client = LightstreamerClient("http://push.lightstreamer.com/","ISSLIVE")
 client.connectionOptions.setSlowingEnabled(False);
