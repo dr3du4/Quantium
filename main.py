@@ -51,35 +51,42 @@ def createClassicalML(df):
 
 
 
-def createFirstCircuit(df,train_features,train_labels):
-     num_features = features.shape[1]
+def createFirstCircuit(df):
+    train_features, test_features, train_labels, test_labels = train_test_split(
+        features, labels, train_size=0.8, random_state=algorithm_globals.random_seed)
 
-     feature_map = ZZFeatureMap(feature_dimension=num_features, reps=1)
-     feature_map.decompose().draw(output="mpl", fold=29)
-     plt.savefig('cirucit28.png')
-     plt.show()
-     ansatz = RealAmplitudes(num_qubits=num_features, reps=1)
-     ansatz.decompose().draw(output="mpl", fold=20)
-     plt.savefig('cirucit20.png')
-     plt.show()
-     optimizer = COBYLA(maxiter=100)
-     sampler = Sampler()
-     vqc = VQC(
-          sampler=sampler,
-          feature_map=feature_map,
-          ansatz=ansatz,
-          optimizer=optimizer,
-          callback=callback_graph,
+    num_features = features.shape[1]
+
+    feature_map = ZZFeatureMap(feature_dimension=num_features, reps=1)
+    feature_map.decompose().draw(output="mpl", fold=29)
+    plt.savefig('cirucit28.png')
+    plt.show()
+    ansatz = RealAmplitudes(num_qubits=num_features, reps=1)
+    ansatz.decompose().draw(output="mpl", fold=20)
+    plt.savefig('cirucit20.png')
+    plt.show()
+    optimizer = COBYLA(maxiter=100)
+    sampler = Sampler()
+    vqc = VQC(
+         sampler=sampler,
+         feature_map=feature_map,
+         ansatz=ansatz,
+         optimizer=optimizer,
+         callback=callback_graph,
      )
 
-     # clear objective value history
-     objective_func_vals = []
+    # clear objective value history
+    objective_func_vals = []
 
-     start = time.time()
-     vqc.fit(train_features, train_labels)
-     elapsed = time.time() - start
+    start = time.time()
+    vqc.fit(train_features, train_labels)
+    elapsed = time.time() - start
+    print(f"Training time: {round(elapsed)} seconds")
+    train_score_q4 = vqc.score(train_features, train_labels)
+    test_score_q4 = vqc.score(test_features, test_labels)
+    print(f"Quantum VQC on the training dataset: {train_score_q4:.2f}")
+    print(f"Quantum VQC on the test dataset:     {test_score_q4:.2f}")
 
-     print(f"Training time: {round(elapsed)} seconds")
 
 objective_func_vals = []
 plt.rcParams["figure.figsize"] = (12, 6)
@@ -95,57 +102,23 @@ def callback_graph(weights, obj_func_eval):
     plt.show()
 
 
-createFirstCircuit(df,features,labels)
-#createFirstCircuit(df)
-#
-#
-#
-#
-# objective_func_vals = []
-# plt.rcParams["figure.figsize"] = (12, 6)
-#
-#
-# def callback_graph(weights, obj_func_eval):
-#     clear_output(wait=True)
-#     objective_func_vals.append(obj_func_eval)
-#     plt.title("Objective function value against iteration")
-#     plt.xlabel("Iteration")
-#     plt.ylabel("Objective function value")
-#     plt.plot(range(len(objective_func_vals)), objective_func_vals)
-#     plt.show()
-#
-#
-# vqc = VQC(
-#     sampler=sampler,
-#     feature_map=feature_map,
-#     ansatz=ansatz,
-#     optimizer=optimizer,
-#     callback=callback_graph,
-# )
-#
-# # clear objective value history
-# objective_func_vals = []
-#
-# start = time.time()
-# vqc.fit(train_features, train_labels)
-# elapsed = time.time() - start
-#
-# print(f"Training time: {round(elapsed)} seconds")
-#
-# train_score_q4 = vqc.score(train_features, train_labels)
-# test_score_q4 = vqc.score(test_features, test_labels)
-#
-# print(f"Quantum VQC on the training dataset: {train_score_q4:.2f}")
-# print(f"Quantum VQC on the test dataset:     {test_score_q4:.2f}")
-#
-# features = PCA(n_components=2).fit_transform(features)
-#
-# plt.rcParams["figure.figsize"] = (6, 6)
-# sns.scatterplot(x=features[:, 0], y=features[:, 1], hue=labels, palette="tab10")
-#
-#
-# plt.show()
-#
+
+
+
+
+
+def reduceQuantumML(df):
+    train_features, test_features, train_labels, test_labels = train_test_split(
+        features, labels, train_size=0.8, random_state=algorithm_globals.random_seed)
+
+
+    features = PCA(n_components=2).fit_transform(features)
+
+    plt.rcParams["figure.figsize"] = (6, 6)
+    sns.scatterplot(x=features[:, 0], y=features[:, 1], hue=labels, palette="tab10")
+    plt.show()
+
+reduceQuantumML()
 # train_features, test_features, train_labels, test_labels = train_test_split(
 #     features, labels, train_size=0.8, random_state=algorithm_globals.random_seed
 # )
