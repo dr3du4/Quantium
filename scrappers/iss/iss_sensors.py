@@ -8,7 +8,7 @@ import shutil
 #     csvwriter = csv.writer(csvfile)
 #     csvwriter.writerow(["TimeStamp", "Value", "ID"])
 
-shutil.copy2('./scrapper/initial_iss_dataset.csv', './scrapper/iss_dataset.csv')
+shutil.copy2('./initial_iss_dataset.csv', './iss_dataset.csv')
 
 client = LightstreamerClient("http://push.lightstreamer.com/","ISSLIVE")
 client.connectionOptions.setSlowingEnabled(False);
@@ -111,7 +111,7 @@ sub = Subscription("MERGE",['USLAB000018', 'USLAB000019', 'USLAB000020', 'USLAB0
 
 class SubListener(SubscriptionListener):
     def onItemUpdate(self, update):
-        with open('./scrapper/iss_dataset.csv', 'a', newline='') as csvfile:
+        with open('./iss_dataset.csv', 'a', newline='') as csvfile:
             csvwriter = csv.writer(csvfile)
             csvwriter.writerow([update.getValue("TimeStamp"), update.getValue("Value"), update.getItemName()])
         print(update.getItemName())
