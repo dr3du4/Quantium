@@ -63,13 +63,11 @@ sub = Subscription("MERGE",["AIRLOCK000001","AIRLOCK000002","AIRLOCK000003","AIR
 #sub.setDataAdapter("QUOTE_ADAPTER")
 #sub.setRequestedSnapshot("yes")
 
-jebacpis = list()
 
 class SubListener(SubscriptionListener):
     def onItemUpdate(self, update):
         print(update.getItemName())
         print("UPDATE " + update.getValue("TimeStamp") + " " + update.getValue("Value"))
-        jebacpis.append([update.getValue("TimeStamp"), update.getValue("Value")])
     def onSubscription(self):
         print("Subscribed!")
     def onUnsubscription(self):
