@@ -2,13 +2,13 @@
     "scrappers": [
     {
         "name": "ISS Sensors",
-        "script": "./scrapper/iss_sensors.py",
-        "csv": "./scrapper/iss_dataset.csv"
+        "script": "./scrapper/iss/iss_sensors.py",
+        "csv": "./scrapper/iss/iss_dataset.csv"
     },
     {
         "name": "NASA Close Proximity Space Objects",
-        "script": "./scrapper/nasa_api.py",
-        "csv": "./scrapper/nasa_dataset.csv"
+        "script": "./scrapper/nasa/nasa_api.py",
+        "csv": "./scrapper/nasa/nasa_dataset.csv"
     }
 ]
 }
