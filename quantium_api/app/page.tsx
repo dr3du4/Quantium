@@ -6,12 +6,14 @@ import background from "/public/images/papaj.jpg";
 
 export default function Home() {
   return(
-    <div style= {{backgroundImage:"url(/quantium_api/public/images/test/papaj.jpg)"}}className={styles.header}>
+    <div className={styles.header}>
+      <Image src="/images/test/papaj.jpg" style={{position: 'absolute',width: '100%',height: '100%'}}/>
       <Head>
-        <title>Quantum Art</title>
+        <title className={styles.title}>Quantum Art</title>
       </Head>
-      <header>
-        <Image  className={styles.img} src="/logo.png" alt="Qiskit logo" width={250} height={250}/>
+      <Image  className={styles.img} src="/logo.png" alt="Qiskit logo" width={250} height={250}/>
+
+      <header className={styles.title}>
         <h1 className={styles.title}>Quantum Art page</h1>
       </header>
       <div className={styles.center}>

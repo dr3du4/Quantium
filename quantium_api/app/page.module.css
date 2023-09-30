@@ -270,7 +270,7 @@
   flex-direction: row;
   flex-shrink: 0;
   font-family: Eina01,sans-serif;
-  font-size: 23px;
+  font-size: 16px;
   font-weight: 800;
   justify-content: center;
   line-height: 24px;
@@ -378,16 +378,16 @@
 
 .container2 {
   width: auto; /* 100% szerokości widoku */ /* 100% wysokości widoku */
-  background-color: #f0f0f0; /* Ustaw kolor tła na dowolny, który chcesz */
+  /* background-color: #f0f0f0; Ustaw kolor tła na dowolny, który chcesz */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   margin-top: 20px;
+  z-index: 10;
 }
 
 .header {
-  background-image: url('/quantium_api/public/images/test/papaj.jpg');
   width: 100vw; /* 100% szerokości widoku */
   height: 100vh; /* 100% wysokości widoku */
   background-color: #f0f0f0; 
@@ -400,13 +400,16 @@
 }
 
 .title {
+  z-index: 10;
   color: #000;
   display: flex;
   justify-content: center;
   align-items: top;
-  padding-top: 60px;
+  padding-top: 30px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 60px;
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 1px 1px;
 }
 
 .select {
@@ -414,7 +417,7 @@
   /* styling */
   background-color: white;
   border: thin solid blue;
-  border-radius: 8px;
+  border-radius: 4px;
   display: inline-block;
   font: inherit;
   line-height: 1.5em;
@@ -431,7 +434,7 @@
    background-image:
     linear-gradient(45deg, transparent 50%, blue 50%),
     linear-gradient(135deg, blue 50%, transparent 50%),
-    linear-gradient(to right, skyblue, skyblue);
+    linear-gradient(to right, rgb(255, 255, 255), white);
   background-position:
     calc(100% - 20px) calc(1em + 2px),
     calc(100% - 15px) calc(1em + 2px),
