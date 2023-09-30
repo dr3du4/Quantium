@@ -3,6 +3,7 @@ import { Dropdown,Toggle,Menu,Item } from './client_imports';
 import styles from './page.module.css'
 import Head from 'next/head';
 
+
 export default function Home() {
   return(
     <div className={styles.header}>
@@ -16,21 +17,14 @@ export default function Home() {
       <div className={styles.center}>
         <Image src="/images/test/foo.png" style={{width: '500px',height: '500px'}}/>
       </div>
-        <div className={styles.container}>        
-          <button className={styles["button-78"]}>Create new Quantum art</button>
-          <button className={styles["button-78"]}>EO</button>
-          <Dropdown>
-            <Toggle variant="success" id="dropdown-basic">
-              Dropdown Button
-            </Toggle>
-
-            <Menu>
-              <Item href="#/action-1">Action</Item>
-              <Item href="#/action-2">Another action</Item>
-              <Item href="#/action-3">Something else</Item>
-            </Menu>
-          </Dropdown>
-        </div>
+      <div className={styles.container}>        
+        <button className={styles["button-78"]}>Create new Quantum art</button>       
+        <select className={styles.select}>
+          <option>CSS SELECT arrow (classic)</option>
+          <option>No external background image</option>
+          <option>No wrapper</option>
+        </select>
+      </div>
     </div>
   )
 }
