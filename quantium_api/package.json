@@ -9,14 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bootstrap": "^5.3.2",
+    "next": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "next": "latest"
+    "react-bootstrap": "^2.9.0",
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@types/react": "latest",
     "@types/node": "latest",
-    "@types/react-dom": "latest"
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "typescript": "latest"
   }
 }
