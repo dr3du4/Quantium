@@ -78,7 +78,7 @@ def callback_graph(weights, obj_func_eval):
     plt.xlabel("Iteration")
     plt.ylabel("Objective function value")
     plt.plot(range(len(objective_func_vals)), objective_func_vals)
-    plt.show()
+    # plt.show()
 
 
 vqc = VQC(
