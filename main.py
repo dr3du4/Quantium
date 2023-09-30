@@ -209,8 +209,8 @@ def createEffcientSU2():
     print(f"Training time: {round(elapsed)} seconds")
 
 createEffcientSU2()
-# createSeaborn(df)
-# createFirstCircuit(df)
+createSeaborn(df)
+createFirstCircuit(df)
 reduceSeeborn(features)
 reduceQuantumML()
 createSecondCircuit(df)
