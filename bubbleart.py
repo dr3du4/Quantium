@@ -268,8 +268,8 @@ class QuantumArt:
 
     def build_art(self, noise, bubble_area, color_list, x, y):
         # A4 size proportions
-        xpixels = math.floor(self.dpi * 14032 / 1200)  # canvas_width default is dpi 1200, width 14032
-        ypixels = math.floor(self.dpi * 9922 / 1200)  # canvas_height default is dpi 1200, height 9922
+        xpixels = math.floor(self.dpi * 9922 / 1080)  # canvas_width default is dpi 1200, width 14032
+        ypixels = math.floor(self.dpi * 14032 / 1920)  # canvas_height default is dpi 1200, height 9922
 
         # get the size in inches
         xinch = xpixels / self.dpi
