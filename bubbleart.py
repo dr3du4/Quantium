@@ -70,6 +70,7 @@ class QuantumArt:
 
         bubble_area = self.noise_bubble_area
         color_list = self.noise_color_list
+        print(color_list+"dfasfffffffffffffffffffffffffff")
         x = self.noise_x
         y = self.noise_y
 
@@ -244,7 +245,7 @@ class QuantumArt:
             y[i] = np.random.rand()
         return list(x), list(y)
 
-    def build_art(self, noise, bubble_area, color_list, x, y):
+    def build_art(self, noise,  bubble_area, color_list, x, y):
         # A4 size proportions
         xpixels = math.floor(self.dpi * 14032 / 1200)  # canvas_width default is dpi 1200, width 14032
         ypixels = math.floor(self.dpi * 9922 / 1200)  # canvas_height default is dpi 1200, height 9922
@@ -252,6 +253,7 @@ class QuantumArt:
         # get the size in inches
         xinch = xpixels / self.dpi
         yinch = ypixels / self.dpi
+
 
         # plot and save in the same size as the original
         fig = plt.figure(figsize=(xinch, yinch))
@@ -265,11 +267,22 @@ class QuantumArt:
 
         buffer_image = io.BytesIO()
         self.buffer_image = buffer_image
-
+        plt.savefig("bubbles.png",)
         fig.savefig(buffer_image, format="png")
         buffer_image.seek(0)
+        plt.show()
 
         return fig
 
     def get_buffer_image(self):  # return the name of the figure
+
         return self.buffer_image
+
+test=QuantumArt(text='', n=2, art_type='bubble', dpi=1200, shots=1024, fig_identifier='0')
+custom_noise_vals = {
+    'p_meas': 0.5,  # Measurement error probability
+    'p_gate1': 0.5  # Gate-1 error probability
+}
+test.get_text()
+test.noise_art(custom_noise_vals=custom_noise_vals,fig_identifier='1')
+test.get_buffer_image()
