@@ -10,7 +10,7 @@ def main():
     load_dotenv()
 
     # Init the CSV file
-    with open('./scrappers/nasa/nasa_dataset.csv', 'w', newline='') as csvfile:
+    with open('./csv/nasa.csv', 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(["date", "absolute_magnitude_h", "estimated_diameter_min", "estimated_diameter_max", "id"])
 
