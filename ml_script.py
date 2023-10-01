@@ -18,6 +18,10 @@ from qiskit.circuit.library import EfficientSU2
 from converter.csv_to_scikit import csv_to_scikit
 import sys
 
+# local imports
+from scrappers.iss.iss_sensors import main as scrape_iss
+from scrappers.nasa.nasa_api import main as scrape_nasa
+
 def process(input_file,output_folder):
     iris_data=csv_to_scikit(input_file)
 
@@ -219,9 +223,11 @@ if args:
     print("Processing")
     if sys.argv[1] == "iris":
         process("./csv/iris.csv","./charts/iris")
-    elif sys.argv[1] == "iss": 
+    elif sys.argv[1] == "iss":
+        scrape_iss()
         process("./csv/iss.csv","./charts/iss")
-    elif sys.argv[1] == "nasa": 
+    elif sys.argv[1] == "nasa":
+        scrape_nasa()
         process("./csv/nasa.csv","./charts/nasa")
     print("FINISHED PROCESSING!")
 else:
