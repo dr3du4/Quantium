@@ -18,7 +18,7 @@ api_json = json.loads(response_API.text)
 nr_erth_obj = api_json["near_earth_objects"]
 for date in api_json["near_earth_objects"]:
     for object in nr_erth_obj[date]:
-        with open('./scrappers/nasa/nasa_dataset.csv', 'a', newline='') as csvfile:
+        with open('./csv/nasa.csv', 'a', newline='') as csvfile:
             magnitude = object["absolute_magnitude_h"]
             diam_min = object["estimated_diameter"]["meters"]["estimated_diameter_min"]
             diam_max = object["estimated_diameter"]["meters"]["estimated_diameter_max"]

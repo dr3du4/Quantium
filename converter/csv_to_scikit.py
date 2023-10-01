@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import csv
 
 def csv_to_scikit(input_file):
     df = pd.read_csv(input_file,header=0)
@@ -10,7 +11,6 @@ def csv_to_scikit(input_file):
         arr.append(word)
 
     arr = np.unique(arr)
-    print(arr)
 
     dict = {}
     for index,value in enumerate(arr):
@@ -31,5 +31,5 @@ def csv_to_scikit(input_file):
     numeric_headers.reverse()
     reverse_df = df[numeric_headers] 
 
-    d = {"data": numpy_array, "target": targets, "feature_names": np.array(arr,"<U10")}
+    d = {"data": numpy_array, "target": np.array(targets), "feature_names": np.array(arr,"<U10"),"columns": df.columns.tolist()}
     return d

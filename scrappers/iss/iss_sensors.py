@@ -111,7 +111,7 @@ sub = Subscription("MERGE",['USLAB000018', 'USLAB000019', 'USLAB000020', 'USLAB0
 
 class SubListener(SubscriptionListener):
     def onItemUpdate(self, update):
-        with open('./iss_dataset.csv', 'a', newline='') as csvfile:
+        with open('./csv/iss.csv', 'a', newline='') as csvfile:
             csvwriter = csv.writer(csvfile)
             csvwriter.writerow([update.getValue("TimeStamp"), update.getValue("Value"), update.getItemName()])
         print(update.getItemName())
