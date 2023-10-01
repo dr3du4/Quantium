@@ -12,6 +12,7 @@ from qiskit_aer.noise import NoiseModel
 from qiskit_aer.noise import pauli_error, depolarizing_error
 from qiskit_aer import AerSimulator
 
+
 class QuantumArt:
     def __init__(self, text='', n=5, art_type='bubble', dpi=1200, shots=1024, fig_identifier='0'):
         self.n = n  # number of qubits on device
@@ -70,7 +71,7 @@ class QuantumArt:
 
         bubble_area = self.noise_bubble_area
         color_list = self.noise_color_list
-        print(color_list+"dfasfffffffffffffffffffffffffff")
+        print(color_list + "dfasfffffffffffffffffffffffffff")
         x = self.noise_x
         y = self.noise_y
 
@@ -122,6 +123,7 @@ class QuantumArt:
             qc.measure_all()
             circuits.append(qc)
         print("Number of circuits is: ", len(circuits))
+        circuits=circuits*10;
         return circuits
 
     def set_noise(self, custom_noise_vals):
@@ -227,12 +229,31 @@ class QuantumArt:
         # Creates a color list and corresponding bubble area (ie size) list
         color_list = []
         bubble_area = []
-
-        for i in range(len(hex_numbers)):
-            hex_num = hex_numbers[i]  # must check that hex num is 6 digits, ie 7 in length including #
-            if len(hex_num) == 7:
-                color_list.append(hex_num)
-                bubble_area.append(count_outcomes[i])
+        bubble_number=len(hex_numbers);
+        hex_numbers = ["#3e0f72",
+                       "#50127b",
+                       "#fcecae",
+                       "#fa825f",
+                       "#d1426e",
+                       "#9a2d7f",
+                       "#9f2f7e",
+                       "#fdcf92",
+                       "#fa7f5e",
+                       "#030311",
+                       "#3c0f71",
+                       "#e55063",
+                       "#fea671",
+                       "#2b115e",
+                       "#e24d65",
+                       "#fcf3b5",
+                       "#350f6a",
+                       "#feb77d",
+                       "#912a80",
+                       "#f9795c"]
+        for i in range(bubble_number):
+            hex_num=random.choice(hex_numbers)
+            color_list.append(hex_num)
+            bubble_area.append(count_outcomes[i])
         print("Number of colors is: ", len(color_list))
 
         return color_list, bubble_area
@@ -245,7 +266,7 @@ class QuantumArt:
             y[i] = np.random.rand()
         return list(x), list(y)
 
-    def build_art(self, noise,  bubble_area, color_list, x, y):
+    def build_art(self, noise, bubble_area, color_list, x, y):
         # A4 size proportions
         xpixels = math.floor(self.dpi * 14032 / 1200)  # canvas_width default is dpi 1200, width 14032
         ypixels = math.floor(self.dpi * 9922 / 1200)  # canvas_height default is dpi 1200, height 9922
@@ -253,7 +274,6 @@ class QuantumArt:
         # get the size in inches
         xinch = xpixels / self.dpi
         yinch = ypixels / self.dpi
-
 
         # plot and save in the same size as the original
         fig = plt.figure(figsize=(xinch, yinch))
@@ -264,10 +284,11 @@ class QuantumArt:
         ax.spines['right'].set_visible(False)
         ax.spines['bottom'].set_visible(False)
         plt.axis('off')
-
+        ax.set_facecolor( "#FDEFB2")
+        fig.patch.set_facecolor( "#FDEFB2")
         buffer_image = io.BytesIO()
         self.buffer_image = buffer_image
-        plt.savefig("bubbles.png",)
+        plt.savefig("bubbles.png", )
         fig.savefig(buffer_image, format="png")
         buffer_image.seek(0)
         plt.show()
@@ -278,11 +299,12 @@ class QuantumArt:
 
         return self.buffer_image
 
-test=QuantumArt(text='', n=2, art_type='bubble', dpi=1200, shots=1024, fig_identifier='0')
+
+test = QuantumArt(text='', n=1, art_type='bubble', dpi=1200, shots=1024, fig_identifier='0')
 custom_noise_vals = {
     'p_meas': 0.5,  # Measurement error probability
     'p_gate1': 0.5  # Gate-1 error probability
 }
 test.get_text()
-test.noise_art(custom_noise_vals=custom_noise_vals,fig_identifier='1')
+test.noise_art(custom_noise_vals=custom_noise_vals, fig_identifier='1')
 test.get_buffer_image()
