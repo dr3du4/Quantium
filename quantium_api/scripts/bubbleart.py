@@ -82,7 +82,7 @@ class QuantumArt:
         # Linguistic input from user, either passed through or taken during initialization
 
         if text == '':
-            word = "wojciechmarcelakropkieloeleoeleoeloeleeoeoeloee"
+            word = "wojciechmarcelakropkieloeleoeleoeloeleeoeoeloeefdsfdsgkdhfgfhkjgdkgkdfhjkdfshgjkdfhdgkjfdjksg"
         else:
             word = text
 

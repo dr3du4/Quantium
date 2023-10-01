@@ -108,11 +108,11 @@ def process(input_file,output_folder):
         clear_output(wait=True)
         objective_func_vals.append(obj_func_eval)
         plt.rcParams["figure.figsize"] = (12, 6)
-        plt.rcParams['axes.facecolor'] = "peru"
+        plt.rcParams['axes.facecolor'] = "#160E3B"
         plt.title("Objective function value against iteration")
         plt.xlabel("Iteration")
         plt.ylabel("Objective function value")
-        plt.plot(range(len(objective_func_vals)), objective_func_vals,color='pink')
+        plt.plot(range(len(objective_func_vals)), objective_func_vals,color='#BD3977')
         # plt.show()
 
 

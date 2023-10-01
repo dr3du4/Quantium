@@ -104,7 +104,7 @@ export default function Home() {
       <Image  className={styles.img} src="/logo.png" alt="Qiskit logo" width={250} height={250}/>
 
       <header className={styles.title}>
-        <h1 className={styles.title}>Quantum Art page</h1>
+        <h1 className={styles.title}>Quantium</h1>
       </header>
       <div style={{marginTop: '200px'}} className={styles.center}>
         {state.chartView ?      
