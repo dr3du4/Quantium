@@ -111,17 +111,20 @@ def main():
 
 
     class SubListener(SubscriptionListener):
+        def __init__(self):
+            self.counter = 0
         def onItemUpdate(self, update):
             with open('./csv/iss.csv', 'a', newline='') as csvfile:
                 csvwriter = csv.writer(csvfile)
                 csvwriter.writerow([update.getValue("TimeStamp"), update.getValue("Value"), update.getItemName()])
-            print(update.getItemName())
-            print("UPDATE " + update.getValue("TimeStamp") + " " + update.getValue("Value"))
+                self.counter += 1
+            #print(update.getItemName())
+            # print("UPDATE " + update.getValue("TimeStamp") + " " + update.getValue("Value"))
             
-        def onSubscription(self):
-            print("Subscribed!")
+        # def onSubscription(self):
+            # print("Subscribed!")
         def onUnsubscription(self):
-            print("Unsubscribed")
+            # print("Unsubscribed")
             return super().onUnsubscription()
         
 
@@ -135,8 +138,8 @@ def main():
     #     continue
         
 
-    print('Connected!')
-    while True:
+    #print('Connected!')
+    while sub.getListeners()[0].counter < 40:
         continue
     
 if __name__ == '__main__':
