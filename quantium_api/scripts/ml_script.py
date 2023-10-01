@@ -218,11 +218,11 @@ args = len(sys.argv)-1
 if args: 
     print("Processing")
     if sys.argv[1] == "iris":
-        process("./csv/iris.csv","./charts/iris")
+        process("./csv/iris.csv","./public/charts/iris")
     elif sys.argv[1] == "iss": 
-        process("./csv/iss.csv","./charts/iss")
+        process("./csv/iss.csv","./public/charts/iss")
     elif sys.argv[1] == "nasa": 
-        process("./csv/nasa.csv","./charts/nasa")
+        process("./csv/nasa.csv","./public/charts/nasa")
     print("FINISHED PROCESSING!")
 else:
     print('Put in args one of this three options: "nasa", "iris" or "iss"')

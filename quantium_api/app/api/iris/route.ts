@@ -2,14 +2,14 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 import { cmd } from "@/app/utils/cmd";
 
-const path_to_script = "/home/patrick/Desktop/Quantium/quantium_api/app/api/scripts/script.py";
+const path_to_script = "./scripts/ml_script.py";
 
 export async function GET(
     req: NextApiRequest,
     res: NextApiResponse
 ){
-  await cmd(["python3", path_to_script]);
+  await cmd(["python3", path_to_script, "iris"]);
   return NextResponse.json({ 
-    message: "Succesfully executed script TEST"
+    message: "Succesfully executed script iris"
   }); 
 }
