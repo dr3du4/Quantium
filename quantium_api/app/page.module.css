@@ -367,7 +367,7 @@
 }
 
 .container1 {
-  width: auto; /* 100% szerokości widoku */ /* 100% wysokości widoku */
+  width: 100vw; /* 100% szerokości widoku */ /* 100% wysokości widoku */
   background-color: #f0f0f0; /* Ustaw kolor tła na dowolny, który chcesz */
   display: flex;
   flex-direction: column;
@@ -377,7 +377,7 @@
 }
 
 .container2 {
-  width: auto; /* 100% szerokości widoku */ /* 100% wysokości widoku */
+  width: 100vw; /* 100% szerokości widoku */ /* 100% wysokości widoku */
   /* background-color: #f0f0f0; Ustaw kolor tła na dowolny, który chcesz */
   display: flex;
   flex-direction: column;
@@ -385,7 +385,10 @@
   align-items: center;
   margin-top: 20px;
   z-index: 10;
+  margin-right: 0;
+  float: right;
 }
+
 
 .header {
   width: 100vw; /* 100% szerokości widoku */
@@ -412,6 +415,18 @@
   text-shadow: 1px 1px;
 }
 
+.input {
+	
+	position:relative;
+	font-size: 1.5em;
+	background: linear-gradient(21deg, #0f0e0e, #ee0000);
+	padding: 3px;
+	display: inline-block;
+	border-radius: 9999em;
+  width: 188px;
+  border: none;
+  outline: none;
+}
 .select {
 
   /* styling */
@@ -557,4 +572,3 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-

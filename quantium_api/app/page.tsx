@@ -1,8 +1,12 @@
 import { Button,Image } from 'react-bootstrap'
-import { Dropdown,Toggle,Menu,Item } from './client_imports';
+import { Dropdown,Toggle,Menu,Item, Popup_win } from './client_imports';
 import styles from './page.module.css'
 import Head from 'next/head';
 import background from "/public/images/papaj.jpg";
+import React from 'react';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
 
 export default function Home() {
   return(
@@ -19,8 +23,12 @@ export default function Home() {
       <div className={styles.center}>
         <Image src="/images/test/foo.png" style={{width: '500px',height: '500px'}}/>
       </div>
-      <div className={styles.container1}>        
-        <button className={styles["button-78"]}>Create new Quantum art</button>       
+      <div className={styles.container1}>
+        <Popup_win trigger=        
+          {<button className={styles["button-78"]}>Create new Quantum art</button>}>
+          <input className={styles.input} type="text" id="fname" name="fname">
+          </input>
+        </Popup_win>      
       </div>
       <div className={styles.container2}>
         <select className={styles.select}>
