@@ -17,6 +17,8 @@ from sklearn.decomposition import (PCA)
 from qiskit.circuit.library import EfficientSU2
 from converter.csv_to_scikit import csv_to_scikit
 import sys
+from scrappers.iss.iss_sensors import main as scrape_iss
+from scrappers.nasa.nasa_api import main as scrape_nasa
 
 def process(input_file,output_folder):
     iris_data=csv_to_scikit(input_file)
@@ -220,8 +222,10 @@ if args:
     if sys.argv[1] == "iris":
         process("./csv/iris.csv","./public/charts/iris")
     elif sys.argv[1] == "iss": 
+        scrape_iss()
         process("./csv/iss.csv","./public/charts/iss")
     elif sys.argv[1] == "nasa": 
+        scrape_nasa()
         process("./csv/nasa.csv","./public/charts/nasa")
     print("FINISHED PROCESSING!")
 else:

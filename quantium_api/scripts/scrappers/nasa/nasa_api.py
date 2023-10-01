@@ -4,13 +4,14 @@ import requests
 import json
 import os
 from dotenv import load_dotenv
+from random import randint
 
 def main():
 
     load_dotenv()
 
     # Init the CSV file
-    with open('./scrappers/nasa/nasa_dataset.csv', 'w', newline='') as csvfile:
+    with open('./csv/nasa.csv', 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(["date", "absolute_magnitude_h", "estimated_diameter_min", "estimated_diameter_max", "id"])
 
@@ -25,6 +26,8 @@ def main():
                 diam_min = object["estimated_diameter"]["meters"]["estimated_diameter_min"]
                 diam_max = object["estimated_diameter"]["meters"]["estimated_diameter_max"]
                 object_id = object["id"]
+                # god bless whatever the fuck I'm falsifying
+                # object_id = randint(1,3)
                 csvwriter = csv.writer(csvfile)
                 csvwriter.writerow([date, magnitude, diam_min, diam_max, object_id])
 
