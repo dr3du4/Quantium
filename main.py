@@ -230,4 +230,3 @@ createSecondCircuit(df)
 #     print(f"SVC, 2 features                 | {train_score_c2:10.2f} | {test_score_c2:10.2f}")
 #     print(f"VQC, 2 features, RealAmplitudes | {train_score_q2_ra:10.2f} | {test_score_q2_ra:10.2f}")
 #     print(f"VQC, 2 features, EfficientSU2   | {train_score_q2_eff:10.2f} | {test_score_q2_eff:10.2f}")
-#     
