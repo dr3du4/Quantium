@@ -21,14 +21,13 @@ export default function Home() {
         <h1 className={styles.title}>Quantum Art page</h1>
       </header>
       <div className={styles.center}>
-        <Image src="/images/test/foo.png" style={{width: '500px',height: '500px'}}/>
+        <Image src="/images/test/foo.png" style={{width: '400px',height: '400px', padding: '8px'}}/>
+        <Image src="/images/test/foo.png" style={{width: '400px',height: '400px', padding: '8px'}}/>
+        <Image src="/images/test/foo.png" style={{width: '400px',height: '400px', padding: '8px'}}/>
+        <Image src="/images/test/foo.png" style={{width: '400px',height: '400px', padding: '8px'}}/>
       </div>
       <div className={styles.container1}>
-        <Popup_win trigger=        
-          {<button className={styles["button-78"]}>Create new Quantum art</button>}>
-          <input className={styles.input} type="text" id="fname" name="fname">
-          </input>
-        </Popup_win>      
+        <button className={styles["button-78"]}>Create new Quantum art</button>    
       </div>
       <div className={styles.container2}>
         <select className={styles.select}>
