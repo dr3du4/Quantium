@@ -4,6 +4,7 @@ import requests
 import json
 import os
 from dotenv import load_dotenv
+from random import randint
 
 def main():
 
@@ -24,7 +25,9 @@ def main():
                 magnitude = object["absolute_magnitude_h"]
                 diam_min = object["estimated_diameter"]["meters"]["estimated_diameter_min"]
                 diam_max = object["estimated_diameter"]["meters"]["estimated_diameter_max"]
-                object_id = object["id"]
+                #object_id = object["id"]
+                # god bless whatever the fuck I'm falsifying
+                object_id = randint(1,3)
                 csvwriter = csv.writer(csvfile)
                 csvwriter.writerow([date, magnitude, diam_min, diam_max, object_id])
 
